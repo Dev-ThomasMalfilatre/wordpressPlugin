@@ -9,3 +9,16 @@ Author: Thomas Malfilatre
 Author URI: dev.thomasmalfilatre@gmail.com
 License: GPL3
 */
+
+include "Class/User.php";
+
+$newUser = new User($_POST['newName'],
+					$_POST['newName'],
+					$_POST['newMail'],
+					$_POST['newPhone'],
+					$_POST['newSex'],
+					$_POST['newPassword'],
+					$_POST['newAddress']
+					);
+
+$newUser->insetIntoDb();

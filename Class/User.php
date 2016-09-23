@@ -32,7 +32,7 @@ class User {
 	 * @param $password
 	 * @param $address
 	 */
-	public function __construct( $id, $firstname, $lastname, $mail, $phone, $sex, $password, $address ) {
+	public function __construct($firstname, $lastname, $mail, $phone, $sex, $password, $address ) {
 		$this->id        = $id;
 		$this->firstname = $firstname;
 		$this->lastname  = $lastname;
@@ -64,7 +64,7 @@ class User {
 
 	public function insertIntoDb(){
 		$db = new Database();
-		$stmt = $db->prepare("INSERT INTO user VALUES (:id, :fname, :lname, :pass, :mail, :phone, :address, :sex, :age)");
+		$stmt = $db->getConnection()->prepare("INSERT INTO user VALUES (:id, :fname, :lname, :pass, :mail, :phone, :address, :sex, :age)");
 
 		$stmt->bindParam(':id', $this->id );
 		$stmt->bindParam(':fname', $this->firstname );

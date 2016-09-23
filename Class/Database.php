@@ -41,5 +41,14 @@ class Database {
 		}
 	}
 
+	public function getConnection(){return $this->cn;}
+
+	public function newId($table){
+		$stmt = $this->cn->prepare("SELECT MAX(id) FROM :table ;");
+		$stmt->bindParam(':table', $table);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
 
 }
