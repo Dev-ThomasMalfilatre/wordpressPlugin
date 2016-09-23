@@ -62,5 +62,21 @@ class User {
 	public function setAddress( $address ) {$this->address = $address;}
 
 
+	public function insertIntoDb(){
+		$db = new Database();
+		$stmt = $db->prepare("INSERT INTO user VALUES (:id, :fname, :lname, :pass, :mail, :phone, :address, :sex, :age)");
+
+		$stmt->bindParam(':id', $this->id );
+		$stmt->bindParam(':fname', $this->firstname );
+		$stmt->bindParam(':lname', $this->lastname );
+		$stmt->bindParam(':pass', $this->password );
+		$stmt->bindParam(':mail', $this->mail );
+		$stmt->bindParam(':phone', $this->phone );
+		$stmt->bindParam(':address', $this->address );
+		$stmt->bindParam(':sex', $this->sex );
+		$stmt->bindParam(':age', $this->age );
+
+		$stmt->execute();
+	}
 
 }

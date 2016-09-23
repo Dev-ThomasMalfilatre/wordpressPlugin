@@ -26,11 +26,11 @@ class Database {
 	 * @param $host
 	 * @param $dbname
 	 */
-	public function __construct($user, $pass, $host, $dbname ) {
-		$this->user   = $user;
-		$this->pass   = $pass;
-		$this->host   = $host;
-		$this->dbname = $dbname;
+	public function __construct() {
+		$this->user   = USER;
+		$this->pass   = PASS;
+		$this->host   = HOST;
+		$this->dbname = DBNAME;
 
 		try{
 			$this->cn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->dbname, $this->user, $this->pass);
